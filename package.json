@@ -1,0 +1,28 @@
+{
+  "name": "@hbsolutions/react-presentational",
+  "version": "1.0.0",
+  "description": "Common React presentational components based on React-Bootstrap",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hbsolutions-ru/react-presentational.git"
+  },
+  "keywords": [
+    "react",
+    "common",
+    "presentational"
+  ],
+  "author": "HBS Development Team <dev.hbsolutions@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hbsolutions-ru/react-presentational/issues"
+  },
+  "homepage": "https://github.com/hbsolutions-ru/react-presentational#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.5.0"
+  }
+}
