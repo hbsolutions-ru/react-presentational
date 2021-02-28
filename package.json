@@ -1,6 +1,6 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common React presentational components based on React-Bootstrap",
   "main": "src/index.js",
   "scripts": {
