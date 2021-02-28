@@ -1,12 +1,12 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.2",
-  "description": "Common React presentational components based on React-Bootstrap",
+  "version": "1.0.3",
+  "description": "Common React presentational components based on React-Bootstrap and Formik",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir build",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,11 @@
   },
   "homepage": "https://github.com/hbsolutions-ru/react-presentational#readme",
   "dependencies": {
+    "formik": "^2.2.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
