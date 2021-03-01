@@ -35,6 +35,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, "build")
+        filename: "index.js",
+        path: path.resolve(__dirname, "lib")
     }
 };
