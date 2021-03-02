@@ -1,6 +1,9 @@
 const path = require("path");
 
 module.exports = {
+    entry: {
+        index: "./src/index.js"
+    },
     module: {
         rules: [
             {
@@ -35,7 +38,9 @@ module.exports = {
         ]
     },
     output: {
+        path: path.resolve(__dirname, "lib"),
         filename: "index.js",
-        path: path.resolve(__dirname, "lib")
-    }
+        libraryTarget: "commonjs",
+    },
+    target: "web"
 };

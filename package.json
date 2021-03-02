@@ -1,8 +1,9 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Common React presentational components based on React-Bootstrap and Formik",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
