@@ -5,7 +5,7 @@ import Confirmation from './components/Confirmation';
 import DropdownSelect from './components/DropdownSelect';
 import ModalEditForm from './components/ModalEditForm';
 
-module.exports = {
+export default {
     Button,
     CollapsibleCard,
     CollapsibleInPortal,

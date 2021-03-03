@@ -1,12 +1,11 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Common React presentational components based on React-Bootstrap and Formik",
   "main": "lib/index.js",
-  "module": "src/index.js",
+  "source": "src/index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development",
+    "build": "microbundle build --jsx React.createElement --jsxFragment React.Fragment --external react,react-dom,formik --format cjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "npm run build"
   },
@@ -26,25 +25,20 @@
   },
   "homepage": "https://github.com/hbsolutions-ru/react-presentational#readme",
   "dependencies": {
-    "formik": "^2.2.6",
-    "react-bootstrap": "^1.5.0",
-    "yup": "^0.32.9"
+    "react-bootstrap": "^1.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.8",
     "@babel/preset-react": "^7.12.13",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.1.0",
+    "formik": "^2.2.6",
+    "microbundle": "^0.13.0",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "react-dom": "^16.14.0"
   },
   "peerDependencies": {
+    "formik": "^2.2.6",
     "react": "^16.14.0 || ^17",
     "react-dom": "^16.14.0 || ^17"
   }

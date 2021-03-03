@@ -8,3 +8,8 @@ Common React presentational components based on React-Bootstrap and Formik.
 - Confirmation
 - DropdownSelect
 - ModalEditForm
+
+## Peer Dependencies
+- react
+- react-dom
+- formik
