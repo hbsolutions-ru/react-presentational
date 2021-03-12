@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
+import { Formik } from 'formik';
+import * as Yup from "yup";
+
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Formik } from 'formik';
+
 import Button from '../Button';
 
-const ModalEditForm = ({ children, handleSubmit, formFields, initialValues, validationSchema, modalTitle }) => {
+const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps }) => {
     const [formShow, setFormShow] = useState(false);
     const [processing, setProcessing] = useState(false);
+
+    const handleInlineFileUpload = (formik, name, file) => {
+        setProcessing(true);
+
+        file.text()
+            .then(result => {
+                formik.setFieldValue(name, result);
+            })
+            .finally(() => {
+                setProcessing(false);
+            });
+    };
 
     const hideForm = () => setFormShow(false);
 
@@ -22,10 +37,24 @@ const ModalEditForm = ({ children, handleSubmit, formFields, initialValues, vali
             });
     };
 
+    const initialValues = fields.reduce((acc, field) => ({
+        ...acc,
+        [field.name]: field.value,
+    }), {});
+
+    const validationSchema = Yup.object(
+        fields.reduce((acc, field) => (
+            field.validation ? {
+                ...acc,
+                [field.name]: field.validation,
+            } : acc
+        ), {})
+    );
+
     return (
         <>
             {children(() => setFormShow(true))}
-            <Modal show={formShow} onHide={hideForm}>
+            <Modal {...modalProps} show={formShow} onHide={hideForm}>
                 <Formik onSubmit={handleSubmitWrapper}
                         initialValues={initialValues}
                         validationSchema={validationSchema}
@@ -36,19 +65,36 @@ const ModalEditForm = ({ children, handleSubmit, formFields, initialValues, vali
                                 <Modal.Title>{modalTitle}</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                {Object.keys(formFields).map((field, index) => (
-                                    <Form.Group as={Row} controlId={field} key={`modal-edit-form-${field}-${index}`}>
-                                        <Form.Label column sm={2}>{formFields[field]}</Form.Label>
-                                        <Col sm={10}>
-                                            <Form.Control {...formik.getFieldProps(field)}
-                                                          type="text"
-                                                          isInvalid={!!(formik.touched[field] && formik.errors[field])}
-                                                          disabled={processing}
-                                            />
-                                            <Form.Control.Feedback type="invalid">{formik.errors[field]}</Form.Control.Feedback>
-                                        </Col>
-                                    </Form.Group>
-                                ))}
+                                {fields.map((field, index) => {
+                                    if (field.type === 'inlineFile') {
+                                        return (
+                                            <Form.Group as={Row} controlId={field.name} key={`modal-edit-form-${field.name}-${index}`}>
+                                                <Form.Label column sm={2}>{field.label}</Form.Label>
+                                                <Col sm={10}>
+                                                    <Form.File type="file" accept={field.fileTypes}
+                                                               onChange={e => e.target.files[0] &&
+                                                                   e.target.files[0].size &&
+                                                                   handleInlineFileUpload(formik, field.name, e.target.files[0])
+                                                               }
+                                                    />
+                                                </Col>
+                                            </Form.Group>
+                                        );
+                                    }
+                                    return (
+                                        <Form.Group as={Row} controlId={field.name} key={`modal-edit-form-${field.name}-${index}`}>
+                                            <Form.Label column sm={2}>{field.label}</Form.Label>
+                                            <Col sm={10}>
+                                                <Form.Control {...formik.getFieldProps(field.name)}
+                                                              type="text"
+                                                              isInvalid={!!(formik.touched[field.name] && formik.errors[field.name])}
+                                                              disabled={processing}
+                                                />
+                                                <Form.Control.Feedback type="invalid">{formik.errors[field.name]}</Form.Control.Feedback>
+                                            </Col>
+                                        </Form.Group>
+                                    );
+                                })}
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary"
