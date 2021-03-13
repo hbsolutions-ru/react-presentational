@@ -1,0 +1,8 @@
+
+.preview-wrap {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px;
+    border: #e9ecef 1px solid;
+    border-radius: 5px;
+}

@@ -86,7 +86,7 @@ const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps 
                                             <Form.Label column sm={2}>{field.label}</Form.Label>
                                             <Col sm={10}>
                                                 <Form.Control {...formik.getFieldProps(field.name)}
-                                                              type="text"
+                                                              type={field.type || 'text'}
                                                               isInvalid={!!(formik.touched[field.name] && formik.errors[field.name])}
                                                               disabled={processing}
                                                 />

@@ -1,6 +1,6 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Common React presentational components based on React-Bootstrap and Formik",
   "main": "lib/index.js",
   "source": "src/index.js",
@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/hbsolutions-ru/react-presentational#readme",
   "dependencies": {
-    "react-bootstrap": "^1.5.2"
+    "react-bootstrap": "^1.5.2",
+    "react-player": "^2.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
