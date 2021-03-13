@@ -66,12 +66,14 @@ const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps 
                             </Modal.Header>
                             <Modal.Body>
                                 {fields.map((field, index) => {
+                                    const props = field.props || {};
                                     if (field.type === 'inlineFile') {
                                         return (
                                             <Form.Group as={Row} controlId={field.name} key={`modal-edit-form-${field.name}-${index}`}>
                                                 <Form.Label column sm={2}>{field.label}</Form.Label>
                                                 <Col sm={10}>
-                                                    <Form.File type="file" accept={field.fileTypes}
+                                                    <Form.File {...props} type="file"
+                                                               accept={field.fileTypes || '*'}
                                                                onChange={e => e.target.files[0] &&
                                                                    e.target.files[0].size &&
                                                                    handleInlineFileUpload(formik, field.name, e.target.files[0])
@@ -81,14 +83,32 @@ const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps 
                                             </Form.Group>
                                         );
                                     }
+                                    if (field.type === 'switch') {
+                                        return (
+                                            <Form.Group as={Row} controlId={field.name} key={`modal-edit-form-${field.name}-${index}`}>
+                                                <Col sm={2} />
+                                                <Col sm={10}>
+                                                    <Form.Check disabled={processing}
+                                                                {...props}
+                                                                {...formik.getFieldProps(field.name)}
+                                                                type="switch"
+                                                                id={field.name + '-' + Math.random().toString(36).substr(2, 8)}
+                                                                label={field.label}
+                                                                checked={!!formik.values[field.name]}
+                                                    />
+                                                </Col>
+                                            </Form.Group>
+                                        );
+                                    }
                                     return (
                                         <Form.Group as={Row} controlId={field.name} key={`modal-edit-form-${field.name}-${index}`}>
                                             <Form.Label column sm={2}>{field.label}</Form.Label>
                                             <Col sm={10}>
-                                                <Form.Control {...formik.getFieldProps(field.name)}
+                                                <Form.Control disabled={processing}
+                                                              {...props}
+                                                              {...formik.getFieldProps(field.name)}
                                                               type={field.type || 'text'}
                                                               isInvalid={!!(formik.touched[field.name] && formik.errors[field.name])}
-                                                              disabled={processing}
                                                 />
                                                 <Form.Control.Feedback type="invalid">{formik.errors[field.name]}</Form.Control.Feedback>
                                             </Col>
