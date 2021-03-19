@@ -20,9 +20,17 @@ const MediaInput = ({ uri, type, accept, onChange, loading, error, removeButton 
         }
 
         if (type.split('/')[0] === 'video') {
-            return (
-                <ReactPlayer url={uri} controls={true} />
-            );
+            if (ReactPlayer.canPlay(uri)) {
+                return (
+                    <ReactPlayer url={uri} controls={true} />
+                );
+            } else {
+                return (
+                    <Alert variant="danger">
+                        Error: failed to fetch video
+                    </Alert>
+                );
+            }
         }
 
         return (
