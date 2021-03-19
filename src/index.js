@@ -3,6 +3,7 @@ import CollapsibleCard from './components/CollapsibleCard';
 import CollapsibleInPortal from './components/CollapsibleInPortal';
 import Confirmation from './components/Confirmation';
 import DropdownSelect from './components/DropdownSelect';
+import MediaInput from './components/MediaInput';
 import ModalEditForm from './components/ModalEditForm';
 
 export default {
@@ -11,5 +12,6 @@ export default {
     CollapsibleInPortal,
     Confirmation,
     DropdownSelect,
+    MediaInput,
     ModalEditForm
 };

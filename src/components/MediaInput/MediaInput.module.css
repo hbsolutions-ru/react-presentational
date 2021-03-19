@@ -6,3 +6,7 @@
     border: #e9ecef 1px solid;
     border-radius: 5px;
 }
+
+.preview-wrap img {
+    max-width: 100%;
+}
