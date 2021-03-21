@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+
 import Button from '../Button';
 
 const Confirmation = ({ children, action, title, message }) => {

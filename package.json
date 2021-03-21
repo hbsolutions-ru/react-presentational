@@ -1,6 +1,6 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Common React presentational components based on React-Bootstrap and Formik",
   "main": "lib/index.js",
   "source": "src/index.js",
