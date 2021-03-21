@@ -1,11 +1,11 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Common React presentational components based on React-Bootstrap and Formik",
   "main": "lib/index.js",
   "source": "src/index.js",
   "scripts": {
-    "build": "microbundle build --jsx React.createElement --jsxFragment React.Fragment --external react,react-dom,formik --format cjs",
+    "build": "microbundle build --jsx React.createElement --jsxFragment React.Fragment --external formik,react,react-dom,yup --format cjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "npm run build"
   },
@@ -25,8 +25,7 @@
   },
   "homepage": "https://github.com/hbsolutions-ru/react-presentational#readme",
   "dependencies": {
-    "react-bootstrap": "^1.5.2",
-    "react-player": "^2.9.0"
+    "react-bootstrap": "^1.5.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",

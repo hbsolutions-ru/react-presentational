@@ -6,8 +6,6 @@ import Image from 'react-bootstrap/Image';
 import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed';
 import Spinner from 'react-bootstrap/Spinner';
 
-import ReactPlayer from 'react-player';
-
 import styles from './MediaInput.module.css';
 
 const MediaInput = ({ uri, type, accept, onChange, loading, error, removeButton }) => {
@@ -20,17 +18,11 @@ const MediaInput = ({ uri, type, accept, onChange, loading, error, removeButton 
         }
 
         if (type.split('/')[0] === 'video') {
-            if (ReactPlayer.canPlay(uri)) {
-                return (
-                    <ReactPlayer url={uri} controls={true} />
-                );
-            } else {
-                return (
-                    <Alert variant="danger">
-                        Error: failed to fetch video
-                    </Alert>
-                );
-            }
+            return (
+                <video controls>
+                    <source src={uri} type={type} />
+                </video>
+            );
         }
 
         return (

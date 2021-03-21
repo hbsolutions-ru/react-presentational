@@ -10,3 +10,8 @@
 .preview-wrap img {
     max-width: 100%;
 }
+
+.preview-wrap video {
+    display: block;
+    max-width: 100%;
+}
