@@ -11,7 +11,7 @@ const RichTextEditorField = ({ autoFocus, className, format, placeholder, readOn
     const [value, setValue] = useState(RichTextEditor.createValueFromString(field.value || '', format));
 
     return (
-        <div className={styles["editor-container"] + (className ? ` ${className}` : '')}>
+        <div className={`${styles["editor-container"]} ${className ? className.toString() : ''}`}>
             <RichTextEditor {...{autoFocus, placeholder, readOnly, toolbarConfig}}
                             value={value}
                             onChange={value => setValue(value)}
