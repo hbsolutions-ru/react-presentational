@@ -4,7 +4,7 @@ import { useField, useFormikContext } from 'formik';
 import Confirmation from '../Confirmation';
 import MediaInput from '../MediaInput';
 
-const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, payload, removeButtonRenderer, ...props }) => {
+const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, removeCallback, payload, removeButtonRenderer, ...props }) => {
     const emptyMedia = {
         id: null,
         resource: null,
@@ -84,13 +84,29 @@ const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, payl
             });
     };
 
+    const removeMedia = () => {
+        if (!media.id) {
+            return;
+        }
+
+        setLoading(true);
+        removeCallback(media.id, payload || {})
+            .then(() => {
+                setMedia(emptyMedia);
+                setFieldValue(field.name, null);
+            })
+            .catch(() => {
+                setError(true);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
     const removeButton = disabled ? (
         <span/>
     ) : (
-        <Confirmation action={() => {
-                          setMedia(emptyMedia);
-                          setFieldValue(field.name, null);
-                      }}
+        <Confirmation action={removeMedia}
                       title="Delete media"
                       message="Are you sure you want to remove this media?"
         >

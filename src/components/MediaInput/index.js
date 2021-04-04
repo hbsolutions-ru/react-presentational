@@ -35,7 +35,7 @@ const MediaInput = ({ uri, type, accept, onChange, loading, error, removeButton 
     if (error) {
         return (
             <Alert variant="danger">
-                Error: failed to fetch media
+                Error: failed to perform action
             </Alert>
         );
     }
