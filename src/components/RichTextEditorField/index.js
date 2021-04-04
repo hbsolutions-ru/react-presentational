@@ -4,11 +4,15 @@ import RichTextEditor from 'react-rte';
 
 import styles from './RichTextEditorField.module.css';
 
-const RichTextEditorField = ({ autoFocus, className, format, placeholder, readOnly, toolbarConfig, customControls, ...props }) => {
+const RichTextEditorField = ({ autoFocus, className, format, customControlsFactory, placeholder, readOnly, toolbarConfig, ...props }) => {
     const { setFieldValue } = useFormikContext();
     const [field] = useField(props);
 
     const [value, setValue] = useState(RichTextEditor.createValueFromString(field.value || '', format));
+
+    const customControls  = typeof customControlsFactory === 'function'
+        ? customControlsFactory(value => setValue(value))
+        : null;
 
     return (
         <div className={`${styles["editor-container"]} ${className ? className.toString() : ''}`}>
