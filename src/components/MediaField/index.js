@@ -119,7 +119,8 @@ const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, remo
                     type={media.type}
                     accept={acceptTypes.join(',')}
                     onChange={uploadMedia}
-                    loading={loading || disabled}
+                    disabled={disabled}
+                    loading={loading}
                     error={error}
                     removeButton={removeButton}
         />

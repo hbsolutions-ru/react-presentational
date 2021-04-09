@@ -8,7 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import styles from './MediaInput.module.css';
 
-const MediaInput = ({ uri, type, accept, onChange, loading, error, removeButton }) => {
+const MediaInput = ({ uri, type, accept, onChange, disabled, loading, error, removeButton }) => {
 
     const renderPreview = (uri, type) => {
         if (type.split('/')[0] === 'image') {
@@ -56,8 +56,14 @@ const MediaInput = ({ uri, type, accept, onChange, loading, error, removeButton 
                         {renderPreview(uri, type)}
                     </div>
                 </div>
-                {removeButton}
+                {disabled ? '' : removeButton}
             </>
+        );
+    }
+
+    if (disabled) {
+        return (
+            <Form.Control type="file" disabled={true} />
         );
     }
 
