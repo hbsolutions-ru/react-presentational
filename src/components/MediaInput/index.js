@@ -2,35 +2,11 @@ import React from 'react';
 
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
-import Image from 'react-bootstrap/Image';
-import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed';
 import Spinner from 'react-bootstrap/Spinner';
 
-import styles from './MediaInput.module.css';
+import MediaPreview from '../MediaPreview';
 
 const MediaInput = ({ uri, type, accept, onChange, disabled, loading, error, removeButton }) => {
-
-    const renderPreview = (uri, type) => {
-        if (type.split('/')[0] === 'image') {
-            return (
-                <Image src={uri} />
-            );
-        }
-
-        if (type.split('/')[0] === 'video') {
-            return (
-                <video controls>
-                    <source src={uri} type={type} />
-                </video>
-            );
-        }
-
-        return (
-            <ResponsiveEmbed aspectRatio="16by9">
-                <embed type={type} src={uri} />
-            </ResponsiveEmbed>
-        );
-    };
 
     if (error) {
         return (
@@ -52,9 +28,7 @@ const MediaInput = ({ uri, type, accept, onChange, disabled, loading, error, rem
         return (
             <>
                 <div>
-                    <div className={styles["preview-wrap"]}>
-                        {renderPreview(uri, type)}
-                    </div>
+                    <MediaPreview uri={uri} type={type} />
                 </div>
                 {disabled ? '' : removeButton}
             </>
