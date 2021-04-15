@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import { getRandomId } from '../../utils/string';
 import Button from '../Button';
 
 const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps }) => {
@@ -92,7 +93,7 @@ const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps 
                                                                 {...props}
                                                                 {...formik.getFieldProps(field.name)}
                                                                 type="switch"
-                                                                id={field.name + '-' + Math.random().toString(36).substr(2, 8)}
+                                                                id={field.name + '-' + getRandomId()}
                                                                 label={field.label}
                                                                 checked={!!formik.values[field.name]}
                                                     />

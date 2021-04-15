@@ -2,10 +2,13 @@ import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Field } from 'formik';
 
-const DropdownSelect = ({ name, variant, options, placeholder, className, isInvalid }) => (
+const DropdownSelect = ({ name, variant, options, placeholder, className, disabled, isInvalid }) => (
     <Field name={name}>
     {({ field: { value }, form: { setFieldValue, setFieldTouched } }) => (
-        <Dropdown onSelect={value => setFieldValue(name, value)} className={isInvalid ? 'is-invalid' : null}>
+        <Dropdown onSelect={value => setFieldValue(name, value)}
+                  className={isInvalid ? 'is-invalid' : null}
+                  disabled={disabled}
+        >
             <Dropdown.Toggle variant={variant} className={`${className} dropdown-select ${isInvalid ? 'is-invalid' : ''}`}>
                 {options[value] || placeholder}
             </Dropdown.Toggle>
