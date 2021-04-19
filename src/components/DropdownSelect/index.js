@@ -7,9 +7,10 @@ const DropdownSelect = ({ name, variant, options, placeholder, className, disabl
     {({ field: { value }, form: { setFieldValue, setFieldTouched } }) => (
         <Dropdown onSelect={value => setFieldValue(name, value)}
                   className={isInvalid ? 'is-invalid' : null}
-                  disabled={disabled}
         >
-            <Dropdown.Toggle variant={variant} className={`${className} dropdown-select ${isInvalid ? 'is-invalid' : ''}`}>
+            <Dropdown.Toggle variant={variant} disabled={disabled}
+                             className={`${className} dropdown-select ${isInvalid ? 'is-invalid' : ''}`}
+            >
                 {options[value] || placeholder}
             </Dropdown.Toggle>
             <Dropdown.Menu>
