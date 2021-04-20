@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 
 import { getRandomId } from '../../utils/string';
 import Button from '../Button';
+import DropdownSelect from '../DropdownSelect';
 
 const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps }) => {
     const [formShow, setFormShow] = useState(false);
@@ -68,12 +69,30 @@ const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps 
                             <Modal.Body>
                                 {fields.map((field, index) => {
                                     const props = field.props || {};
+                                    if (field.type === 'dropdownSelect') {
+                                        return (
+                                            <Row key={`modal-edit-form-${field.name}-${index}`}>
+                                                <Col sm={2}>
+                                                    <Form.Label>{field.label}</Form.Label>
+                                                </Col>
+                                                <Col sm={10}>
+                                                    <DropdownSelect disabled={processing}
+                                                                    {...props}
+                                                                    name={field.name}
+                                                                    options={field.options}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                        );
+                                    }
                                     if (field.type === 'inlineFile') {
                                         return (
                                             <Form.Group as={Row} controlId={field.name} key={`modal-edit-form-${field.name}-${index}`}>
                                                 <Form.Label column sm={2}>{field.label}</Form.Label>
                                                 <Col sm={10}>
-                                                    <Form.File {...props} type="file"
+                                                    <Form.File disabled={processing}
+                                                               {...props}
+                                                               type="file"
                                                                accept={field.fileTypes || '*'}
                                                                onChange={e => e.target.files[0] &&
                                                                    e.target.files[0].size &&
