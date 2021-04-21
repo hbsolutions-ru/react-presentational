@@ -71,9 +71,9 @@ const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps 
                                     const props = field.props || {};
                                     if (field.type === 'dropdownSelect') {
                                         return (
-                                            <Row key={`modal-edit-form-${field.name}-${index}`}>
+                                            <Form.Group as={Row} controlId={field.name} key={`modal-edit-form-${field.name}-${index}`}>
                                                 <Col sm={2}>
-                                                    <Form.Label>{field.label}</Form.Label>
+                                                    <Form.Label className="mt-2">{field.label}</Form.Label>
                                                 </Col>
                                                 <Col sm={10}>
                                                     <DropdownSelect disabled={processing}
@@ -82,7 +82,7 @@ const ModalEditForm = ({ children, handleSubmit, fields, modalTitle, modalProps 
                                                                     options={field.options}
                                                     />
                                                 </Col>
-                                            </Row>
+                                            </Form.Group>
                                         );
                                     }
                                     if (field.type === 'inlineFile') {
