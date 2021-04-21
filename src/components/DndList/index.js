@@ -6,10 +6,22 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import { getRandomId } from '../../utils/string';
 
-const DndList = ({ children, formik, name, onDragEnd }) => {
+const DndList = ({ children, formik, name }) => {
     // Need unique ids for rendering the droppable and draggable
     const droppableId = 'droppable-' + getRandomId();
     const draggablePrefixId = `draggable-${getRandomId()}-`;
+
+    const onDragEnd = ({ arrayHelpers, source, destination }) => {
+        if (!(arrayHelpers && source && destination)) {
+            return;
+        }
+        arrayHelpers.move(source.index, destination.index);
+    };
+
+    const items = formik.values[name].map(item => ({
+        id: item.id || getRandomId(),
+        data: item,
+    }));
 
     return (
         <FieldArray name={name}
@@ -22,7 +34,7 @@ const DndList = ({ children, formik, name, onDragEnd }) => {
                                              {...provided.droppableProps}
                                         >
                                             <ListGroup>
-                                                {formik.values[name].map((item, index) => (
+                                                {items.map((item, index) => (
                                                     <Draggable key={draggablePrefixId + item.id} draggableId={draggablePrefixId + item.id} index={index}>
                                                         {provided => (
                                                             <div ref={provided.innerRef}
@@ -31,7 +43,7 @@ const DndList = ({ children, formik, name, onDragEnd }) => {
                                                             >
                                                                 <ListGroup.Item>
                                                                     {children(
-                                                                        item,
+                                                                        item.data,
                                                                         () => arrayHelpers.remove(index)
                                                                     )}
                                                                 </ListGroup.Item>
