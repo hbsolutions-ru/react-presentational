@@ -2,6 +2,7 @@ import Button from './components/Button';
 import CollapsibleCard from './components/CollapsibleCard';
 import CollapsibleInPortal from './components/CollapsibleInPortal';
 import Confirmation from './components/Confirmation';
+import DatePicker from './components/DatePicker';
 import DndList from './components/DndList';
 import DropdownSelect from './components/DropdownSelect';
 import MediaField from './components/MediaField';
@@ -15,6 +16,7 @@ export default {
     CollapsibleCard,
     CollapsibleInPortal,
     Confirmation,
+    DatePicker,
     DndList,
     DropdownSelect,
     MediaField,
