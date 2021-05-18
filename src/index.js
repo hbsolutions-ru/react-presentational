@@ -1,4 +1,5 @@
 import Button from './components/Button';
+import CheckboxesPalette from './components/CheckboxesPalette';
 import CollapsibleCard from './components/CollapsibleCard';
 import CollapsibleInPortal from './components/CollapsibleInPortal';
 import Confirmation from './components/Confirmation';
@@ -13,6 +14,7 @@ import RichTextEditorField from './components/RichTextEditorField';
 
 export default {
     Button,
+    CheckboxesPalette,
     CollapsibleCard,
     CollapsibleInPortal,
     Confirmation,

@@ -3,9 +3,11 @@ Common React presentational components based on React-Bootstrap and Formik.
 
 ## Components
 - Button
+- CheckboxesPalette
 - CollapsibleCard
 - CollapsibleInPortal
 - Confirmation
+- DatePicker
 - DndList
 - DropdownSelect
 - MediaField

@@ -1,0 +1,8 @@
+
+.datepicker-wrapper {
+    display: block;
+}
+
+.datepicker-popper {
+    z-index: 2;
+}
