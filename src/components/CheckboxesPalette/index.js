@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 
 import { getRandomId, removeArrayValue } from '../../utils/string';
 
-const CheckboxesPalette = ({ items, itemClassName, itemColSize, ...props }) => {
+const CheckboxesPalette = ({ items, itemClassName, itemColSize, className, ...props }) => {
     const idPrefix = 'checkboxes-palette-' + getRandomId();
 
     const { setFieldValue } = useFormikContext();
@@ -20,7 +20,7 @@ const CheckboxesPalette = ({ items, itemClassName, itemColSize, ...props }) => {
     }
 
     return (
-        <Card>
+        <Card body className={className}>
             <Row>
                 {items.map((item, index) => {
                     const id = parseInt(item.id);

@@ -5,6 +5,7 @@ import CollapsibleInPortal from './components/CollapsibleInPortal';
 import Confirmation from './components/Confirmation';
 import DatePicker from './components/DatePicker';
 import DndList from './components/DndList';
+import DropdownCheckboxesPalette from './components/DropdownCheckboxesPalette';
 import DropdownSelect from './components/DropdownSelect';
 import MediaField from './components/MediaField';
 import MediaInput from './components/MediaInput';
@@ -20,6 +21,7 @@ export default {
     Confirmation,
     DatePicker,
     DndList,
+    DropdownCheckboxesPalette,
     DropdownSelect,
     MediaField,
     MediaInput,
