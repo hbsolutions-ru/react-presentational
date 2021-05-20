@@ -1,7 +1,22 @@
 
 .dropdown {
     padding: 0;
+}
+
+.dropdown-size-12 {
+    width: 20vw;
+}
+
+.dropdown-size-6 {
     width: 25vw;
+}
+
+.dropdown-size-4 {
+    width: 33vw;
+}
+
+.dropdown-size {
+    width: 45vw;
 }
 
 .palette {
