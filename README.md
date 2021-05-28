@@ -16,6 +16,7 @@ Common React presentational components based on React-Bootstrap and Formik.
 - MediaPreview
 - ModalEditForm
 - RichTextEditorField
+- TypeaheadInput
 
 ## Peer Dependencies
 - formik

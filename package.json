@@ -1,6 +1,6 @@
 {
   "name": "@hbsolutions/react-presentational",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "Common React presentational components based on React-Bootstrap and Formik",
   "main": "lib/index.js",
   "source": "src/index.js",
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/hbsolutions-ru/react-presentational#readme",
   "dependencies": {
     "react-bootstrap": "^1.6.0",
+    "react-bootstrap-typeahead": "^5.1.4",
     "react-datepicker": "^3.8.0"
   },
   "devDependencies": {
@@ -33,8 +34,8 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
-    "formik": "^2.2.7",
-    "microbundle": "^0.13.0",
+    "formik": "^2.2.8",
+    "microbundle": "^0.13.1",
     "react": "^17",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17",

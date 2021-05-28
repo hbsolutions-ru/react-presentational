@@ -12,6 +12,7 @@ import MediaInput from './components/MediaInput';
 import MediaPreview from './components/MediaPreview';
 import ModalEditForm from './components/ModalEditForm';
 import RichTextEditorField from './components/RichTextEditorField';
+import TypeaheadInput from './components/TypeaheadInput';
 
 export default {
     Button,
@@ -27,5 +28,6 @@ export default {
     MediaInput,
     MediaPreview,
     ModalEditForm,
-    RichTextEditorField
+    RichTextEditorField,
+    TypeaheadInput
 };

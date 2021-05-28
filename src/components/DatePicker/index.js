@@ -1,8 +1,8 @@
 import React from 'react';
 import { useField, useFormikContext } from 'formik';
 
-import ReactDatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import styles from './DatePicker.module.css';
 
