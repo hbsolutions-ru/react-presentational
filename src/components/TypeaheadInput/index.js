@@ -6,7 +6,7 @@ import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 import { getRandomId } from '../../utils/string';
 
-const TypeaheadInput = ({ options, placeholder, ...props }) => {
+const TypeaheadInput = ({ labelKey, options, placeholder, ...props }) => {
     const { setFieldValue } = useFormikContext();
     const [field] = useField(props);
 
@@ -14,11 +14,11 @@ const TypeaheadInput = ({ options, placeholder, ...props }) => {
 
     return (
         <Typeahead id={elementId}
-                   labelKey={props.name}
+                   labelKey={labelKey}
                    onChange={value => setFieldValue(field.name, value)}
                    options={options}
                    placeholder={placeholder}
-                   selected={field.value || ''}
+                   selected={field.value || []}
         />
     );
 };
