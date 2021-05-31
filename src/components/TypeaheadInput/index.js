@@ -13,7 +13,8 @@ const TypeaheadInput = ({ labelKey, options, placeholder, ...props }) => {
     const elementId = 'typeahead-input-' + props.name + '-' + getRandomId();
 
     return (
-        <Typeahead id={elementId}
+        <Typeahead {...props}
+                   id={elementId}
                    labelKey={labelKey}
                    onChange={value => setFieldValue(field.name, value)}
                    options={options}
