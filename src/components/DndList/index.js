@@ -6,14 +6,20 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import { getRandomId } from '../../utils/string';
 
-const DndList = ({ children, formik, name }) => {
+const DndList = ({ children, formik, name, onDragEnd }) => {
     // Need unique ids for rendering the droppable and draggable
     const droppableId = 'droppable-' + getRandomId();
     const draggablePrefixId = `draggable-${getRandomId()}-`;
 
-    const onDragEnd = ({ arrayHelpers, source, destination }) => {
+    const onDragEndCallback = ({ arrayHelpers, source, destination }) => {
         if (!(arrayHelpers && source && destination)) {
             return;
+        }
+        if (typeof onDragEnd === 'function') {
+            onDragEnd({
+                source: source.index,
+                destination: destination.index,
+            });
         }
         arrayHelpers.move(source.index, destination.index);
     };
@@ -27,7 +33,7 @@ const DndList = ({ children, formik, name }) => {
         <FieldArray name={name}
                     render={arrayHelpers => (
                         <>
-                            <DragDropContext onDragEnd={({ source, destination }) => onDragEnd({ arrayHelpers, source, destination })}>
+                            <DragDropContext onDragEnd={({ source, destination }) => onDragEndCallback({ arrayHelpers, source, destination })}>
                                 <Droppable droppableId={droppableId}>
                                     {provided => (
                                         <div ref={provided.innerRef}
