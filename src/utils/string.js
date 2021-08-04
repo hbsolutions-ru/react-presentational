@@ -1,5 +1,5 @@
 
-export const getRandomId = () => Math.random().toString(36).substr(2, 8);
+export const getRandomId = () => Math.random().toString(36).substring(2, 10);
 
 export const removeArrayValue = (array, value) => {
     const index = array.indexOf(value);
