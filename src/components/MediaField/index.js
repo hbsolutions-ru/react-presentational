@@ -8,6 +8,7 @@ const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, remo
     const emptyMedia = {
         id: null,
         resource: null,
+        type: null,
     };
 
     const { setFieldValue } = useFormikContext();
@@ -18,6 +19,7 @@ const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, remo
     const [error, setError] = useState(false);
     const [media, setMedia] = useState(emptyMedia);
 
+    // Initial effect
     useEffect(() => {
         let isMounted = true;
 
@@ -64,6 +66,14 @@ const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, remo
             isMounted = false;
         };
     }, [initValue]);
+
+    // Field update effect
+    useEffect(() => {
+        if (parseInt(field.value) || media.resource === null) {
+            return;
+        }
+        setMedia(emptyMedia);
+    }, [field.value]);
 
     const uploadMedia = file => {
         if (!file) {
