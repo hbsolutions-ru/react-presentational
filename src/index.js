@@ -11,7 +11,6 @@ import MediaField from './components/MediaField';
 import MediaInput from './components/MediaInput';
 import MediaPreview from './components/MediaPreview';
 import ModalEditForm from './components/ModalEditForm';
-import RichTextEditorField from './components/RichTextEditorField';
 import TypeaheadInput from './components/TypeaheadInput';
 
 export default {
@@ -28,6 +27,5 @@ export default {
     MediaInput,
     MediaPreview,
     ModalEditForm,
-    RichTextEditorField,
     TypeaheadInput
 };

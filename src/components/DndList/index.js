@@ -20,7 +20,7 @@ const DndList = ({ children, formik, name, onDragEnd }) => {
             onDragEnd({
                 source: source.index,
                 destination: destination.index,
-            }, formik.values[name][destination.index]);
+            });
         }
     };
 
