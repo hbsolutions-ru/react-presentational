@@ -8,7 +8,19 @@ import CheckboxesPalette from '../CheckboxesPalette';
 
 import styles from './DropdownCheckboxesPalette.module.css';
 
-const DropdownCheckboxesPalette = ({ variant, pillVariant, menuAlign, disabled, className, itemColSize, paletteClassName, ...props }) => {
+const DropdownCheckboxesPalette = ({
+    items,
+    variant,
+    pillVariant,
+    menuAlign,
+    disabled,
+    className,
+    itemColSize,
+    paletteClassName,
+    collapseValuesCount = 1,
+    customLabelNothingSelected = 'Nothing selected',
+    ...props
+}) => {
     const [field] = useField(props);
 
     if (!Array.isArray(field.value)) {
@@ -18,21 +30,30 @@ const DropdownCheckboxesPalette = ({ variant, pillVariant, menuAlign, disabled, 
 
     const dropdownSizeStyle = [4, 6, 12].indexOf(parseInt(itemColSize)) !== -1 ? 'dropdown-size-' + itemColSize : 'dropdown-size';
 
+    const renderValuePills = () => (
+        field.value.length >= collapseValuesCount ? (
+            <Badge pill variant={pillVariant || 'primary'}>
+                {field.value.length} items selected
+            </Badge>
+        ) : items.map((item, index) => field.value.indexOf(parseInt(item.id)) !== -1 ? (
+            <Badge pill variant={pillVariant || 'primary'} key={index} className="mr-1">
+                {item.name}
+            </Badge>
+        ) : '')
+    );
+
     return (
         <Dropdown>
             <Dropdown.Toggle variant={variant} disabled={disabled}
                              className={`${className} dropdown-select`}
             >
-                {field.value.length ? (
-                    <Badge pill variant={pillVariant || 'primary'}>
-                        {field.value.length} items selected
-                    </Badge>
-                ) : 'Any'}
+                {field.value.length ? renderValuePills() : customLabelNothingSelected}
             </Dropdown.Toggle>
             <Dropdown.Menu className={`${styles["dropdown"]} ${styles[dropdownSizeStyle]}`}
                            align={menuAlign || 'left'}
             >
                 <CheckboxesPalette {...props}
+                                   items={items}
                                    itemColSize={itemColSize}
                                    className={`${styles["palette"]} ${paletteClassName ? paletteClassName.toString() : 'bg-light'}`}
                 />
