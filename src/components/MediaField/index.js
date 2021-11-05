@@ -124,11 +124,17 @@ const MediaField = ({ acceptTypes, disabled, fetchCallback, uploadCallback, remo
         </Confirmation>
     );
 
+    const resetField = () => {
+        setError(false);
+        removeMedia();
+    };
+
     return (
         <MediaInput uri={media.resource}
                     type={media.type}
                     accept={acceptTypes.join(',')}
                     onChange={uploadMedia}
+                    onReset={resetField}
                     disabled={disabled}
                     loading={loading}
                     error={error}

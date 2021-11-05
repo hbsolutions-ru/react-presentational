@@ -11,12 +11,12 @@ import styles from './DropdownCheckboxesPalette.module.css';
 const DropdownCheckboxesPalette = ({
     items,
     variant,
-    pillVariant,
-    menuAlign,
     disabled,
     className,
     itemColSize,
     paletteClassName,
+    pillVariant = 'primary',
+    menuAlign = 'left',
     collapseValuesCount = 1,
     customLabelNothingSelected = 'Nothing selected',
     ...props
@@ -32,11 +32,11 @@ const DropdownCheckboxesPalette = ({
 
     const renderValuePills = () => (
         field.value.length >= collapseValuesCount ? (
-            <Badge pill variant={pillVariant || 'primary'}>
+            <Badge pill variant={pillVariant}>
                 {field.value.length} items selected
             </Badge>
         ) : items.map((item, index) => field.value.indexOf(parseInt(item.id)) !== -1 ? (
-            <Badge pill variant={pillVariant || 'primary'} key={index} className="mr-1">
+            <Badge pill variant={pillVariant} key={index} className="mr-1">
                 {item.name}
             </Badge>
         ) : '')
@@ -50,7 +50,7 @@ const DropdownCheckboxesPalette = ({
                 {field.value.length ? renderValuePills() : customLabelNothingSelected}
             </Dropdown.Toggle>
             <Dropdown.Menu className={`${styles["dropdown"]} ${styles[dropdownSizeStyle]}`}
-                           align={menuAlign || 'left'}
+                           align={menuAlign}
             >
                 <CheckboxesPalette {...props}
                                    items={items}

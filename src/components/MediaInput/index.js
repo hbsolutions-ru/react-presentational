@@ -1,17 +1,22 @@
 import React from 'react';
 
 import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Spinner from 'react-bootstrap/Spinner';
 
 import MediaPreview from '../MediaPreview';
 
-const MediaInput = ({ uri, type, accept, onChange, disabled, loading, error, removeButton }) => {
+import styles from './MediaInput.module.css';
+
+const MediaInput = ({ uri, type, accept, onChange, onReset, disabled, loading, error, removeButton }) => {
 
     if (error) {
         return (
             <Alert variant="danger">
-                Error: failed to perform action
+                Error: failed to perform action.{typeof onReset === 'function' ? (
+                    <Button as="a" variant="link" className={styles["valign-base"]} onClick={onReset}>Try again</Button>
+                ) : ''}
             </Alert>
         );
     }
