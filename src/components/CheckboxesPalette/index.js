@@ -23,11 +23,7 @@ const CheckboxesPalette = ({ items, itemClassName, itemColSize, className, ...pr
         <Card body className={className}>
             <Row>
                 {items.map((item, index) => {
-                    const id = parseInt(item.id);
-                    if (!id) {
-                        console.error('CheckboxesPalette: id is missed for the item: ', item);
-                        return '';
-                    }
+                    const id = item.id;
 
                     return (
                         <Col sm={itemColSize || 6} key={id} className={itemClassName || 'mb-1'}>
