@@ -35,7 +35,7 @@ const DropdownCheckboxesPalette = ({
             <Badge pill variant={pillVariant}>
                 {field.value.length} items selected
             </Badge>
-        ) : items.map((item, index) => field.value.indexOf(parseInt(item.id)) !== -1 ? (
+        ) : items.map((item, index) => field.value.indexOf(item.id) !== -1 ? (
             <Badge pill variant={pillVariant} key={index} className="mr-1">
                 {item.name}
             </Badge>
